@@ -16,7 +16,7 @@
 [awesome]: https://awesome.re/badge.svg
 [stars-url]: https://github.com/perezromeojohn/junkitecommerce
 
-## About Greenworks (Formerly known as Junk-It)
+## About Gizmos and Language
 
 A top-down game that focuses in the rudimentary teachings of programming. It is intended to teach First Year CCS Students to Introductory logics, types of languages, operators, variables, and other forms of programming branch that is considered introductory.
 
