@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 7889944763683257422}
   - component: {fileID: 2137512440425290273}
   - component: {fileID: 8351539036132048485}
+  - component: {fileID: 2279297265155685708}
+  - component: {fileID: 7978095786712878112}
   m_Layer: 0
   m_Name: Mark
   m_TagString: Untagged
@@ -234,3 +236,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12381631, y: 0.16384}
   m_EdgeRadius: 0
+--- !u!114 &2279297265155685708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889944763683257419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a7b0d4d28892c4d82365e09c6bb112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messages: []
+  actors: []
+--- !u!114 &7978095786712878112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889944763683257419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06881cd4360354d48ab1ac3452e544e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueTrigger: {fileID: 2279297265155685708}
