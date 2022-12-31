@@ -16,6 +16,8 @@ public class DialogueTrigger : MonoBehaviour
 public class Message {
     public int actorId;
     public string message;
+    public string[] choices;
+    public int[] nextMessageIndices;
 }
 
 [System.Serializable]
