@@ -15,10 +15,14 @@ public class DialogueManager : MonoBehaviour
     public Button buttonPrefab;
     public RectTransform buttonParent;
 
+    public CinemachineRecomposer composer;
+
 
     Message[] currentMessages;
     Actor[] currentActors;
     int activeMessage = 0;
+    
+    float duration = 0.5f;
     public static bool isActive = false;
 
     public void OpenDialogue(Message[] messages, Actor[] actors)
@@ -45,6 +49,8 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
+        ZoomIn();
+
         DisplayMessage();
         backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
 
@@ -54,6 +60,8 @@ public class DialogueManager : MonoBehaviour
         // set animation to idle
         player.GetComponent<Animator>().SetBool("isMoving", false);
     }
+
+
 
     void DisplayMessage() {
         Message messageToDisplay = currentMessages[activeMessage];
@@ -65,6 +73,7 @@ public class DialogueManager : MonoBehaviour
 
         AnimateTextColor();
     }
+    
 
     public void NextMessage() {
         // Animate the buttons out before destroying them
@@ -88,6 +97,8 @@ public class DialogueManager : MonoBehaviour
             backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             isActive = false;
 
+            ZoomOut();
+
             // enable player movement
             player.GetComponent<PlayerController>().enabled = true;
         }
@@ -110,6 +121,34 @@ public class DialogueManager : MonoBehaviour
         }
 
         DisplayMessage();
+    }
+
+    // Function to zoom the camera in
+    void ZoomIn() {
+        Debug.Log("Zooming in");
+        // Set the starting and ending zoom values
+        float startZoom = composer.m_ZoomScale;
+        float endZoom = 0.5f;
+
+        // Start the smooth zoom
+        LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
+            // Set the camera's zoom value to the current animation value
+            composer.m_ZoomScale = val;
+        }).setEaseInOutExpo();
+    }
+
+    // Function to zoom the camera out
+    void ZoomOut() {
+        Debug.Log("Zooming out");
+        // Set the starting and ending zoom values
+        float startZoom = composer.m_ZoomScale;
+        float endZoom = 1;
+
+        // Start the smooth zoom
+        LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
+            // Set the camera's zoom value to the current animation value
+            composer.m_ZoomScale = val;
+        }).setEaseInOutExpo();
     }
 
     void MakeChoice(int choiceIndex) {
