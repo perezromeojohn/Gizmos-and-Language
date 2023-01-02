@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3777762151125451074}
   - component: {fileID: 6490917848613373574}
   - component: {fileID: 1984524567273832331}
-  - component: {fileID: 1347513555292928548}
+  - component: {fileID: 1112902425}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  collisionOffset: 4.49
+  collisionOffset: 1.5
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -275,7 +275,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.06060992, y: 0.03712692}
   m_EdgeRadius: 0
---- !u!95 &1347513555292928548
+--- !u!95 &1112902425
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="Assets\imgs\gizmos.png" width="700" height="100%">
+    <img src="Assets\Graphics\Main Screen\gizmos.png" width="700" height="100%">
 </p>
 <h1 align="center">
     

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    PlayerInput playerInput;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +21,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void Update() {
-
+        if (DialogueManager.GetInstance().dialogueIsPlaying)  {
+            // get the player input component and disable it
+            playerInput.enabled = false;
+        } else {
+            playerInput.enabled = true;
+        }
     }
     // Update is called once per frame
     private void FixedUpdate()
     {
+        
         if(movementInput != Vector2.zero)
         {
             bool success = TryMove(movementInput);

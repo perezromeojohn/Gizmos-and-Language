@@ -4,24 +4,59 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Message[] messages;
-    public Actor[] actors;
+    [Header("Visual Cue")]
+    [SerializeField] private GameObject visualCue;
 
-    public void StartDialogue() {
-        FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
+    [Header("Ink JSON")]
+    [SerializeField] private TextAsset inkJSON;
+
+    [SerializeField]
+
+    private bool playerInRange;
+
+    private void Awake()
+    {
+        playerInRange = false;
+        visualCue.SetActive(false);
     }
-}
 
-[System.Serializable]
-public class Message {
-    public int actorId;
-    public string message;
-    public string[] choices;
-    public int[] nextMessageIndices;
-}
+    private void Update() {
+        if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying) {
+            visualCue.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E)) {
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+            }
+        }
+    }
 
-[System.Serializable]
-public class Actor {
-    public string name;
-    public Sprite sprite;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // get the player tag
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = true;
+            visualCue.SetActive(true);
+
+            // LeanTween position of visual cue to y 0.25f
+            LeanTween.moveLocalY(visualCue, 0.25f, 0.3f).setEaseInOutExpo();
+            // LeanTween scale of visual cue to 1
+            LeanTween.scale(visualCue, Vector3.one, 0.3f).setEaseInOutExpo();
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // get the player tag
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = false;
+            // LeanTween position of visual cue to y 0.25f
+            LeanTween.moveLocalY(visualCue, 0.0f, 0.3f).setEaseInOutExpo();
+            // LeanTween scale of visual cue to 1
+            LeanTween.scale(visualCue, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => visualCue.SetActive(false));
+        }
+
+        
+    }
 }

@@ -1,192 +1,99 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Image actorImage;
-    public TextMeshProUGUI actorName;
-    public TextMeshProUGUI actorMessage;
-    public RectTransform backgroundBox;
-    public GameObject player;
 
-    public Button buttonPrefab;
-    public RectTransform buttonParent;
+    private static DialogueManager instance;
 
-    public CinemachineRecomposer composer;
+    [Header("Dialogue UI")]
+    [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private TextMeshProUGUI dialogueText;
 
+    [Header("Choices UI")]
+    [SerializeField] private GameObject[] choices;
+    private TextMeshProUGUI[] choiceTexts;
 
-    Message[] currentMessages;
-    Actor[] currentActors;
-    int activeMessage = 0;
-    
-    float duration = 0.5f;
-    public static bool isActive = false;
-
-    public void OpenDialogue(Message[] messages, Actor[] actors)
-    {
-        currentMessages = messages;
-        currentActors = actors;
-        activeMessage = 0;
-        isActive = true;
-        Debug.Log("Started Conversation, Loaded Messages: " + messages.Length);
-
-        // Create buttons for all messages that have choices
-        for (int i = 0; i < currentMessages.Length; i++) {
-            Message messageToDisplay = currentMessages[i];
-            if (messageToDisplay.choices.Length > 0) {
-                // Create a button for each choice in the current message
-                for (int j = 0; j < messageToDisplay.choices.Length; j++) {
-                    Button button = Instantiate(buttonPrefab, buttonParent);
-                    button.GetComponentInChildren<TextMeshProUGUI>().text = messageToDisplay.choices[j];
-                    int index = j; // Capture the index in a local variable
-                    button.onClick.AddListener(() => {
-                        MakeChoice(index);
-                    });
-                }
-            }
+    private Story currentStory;
+    public  bool dialogueIsPlaying { get; private set; }
+    private void Awake() {
+        if (instance != null) {
+            Debug.LogWarning("More than one instance of DialogueManager found!");
         }
-
-        ZoomIn();
-
-        DisplayMessage();
-        backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
-
-        // disable player movement
-        player.GetComponent<PlayerController>().enabled = false;
-
-        // set animation to idle
-        player.GetComponent<Animator>().SetBool("isMoving", false);
+        instance = this;
     }
 
-
-
-    void DisplayMessage() {
-        Message messageToDisplay = currentMessages[activeMessage];
-        actorMessage.text = messageToDisplay.message;
-
-        Actor actorToDisplay = currentActors[messageToDisplay.actorId];
-        actorName.text = actorToDisplay.name;
-        actorImage.sprite = actorToDisplay.sprite;
-
-        AnimateTextColor();
+    public static DialogueManager GetInstance() {
+        return instance;
     }
-    
 
-    public void NextMessage() {
-        // Animate the buttons out before destroying them
-        foreach (Transform child in buttonParent) {
-            LeanTween.scale(child.gameObject, Vector3.zero, 0.5f).setEaseInOutExpo().setOnComplete(() => {
-                Destroy(child.gameObject);
-            });
+    private void Start() {
+        dialogueIsPlaying = false;
+        dialoguePanel.SetActive(false);
+
+        choiceTexts = new TextMeshProUGUI[choices.Length];
+        int i = 0;
+        foreach (GameObject choice in choices) {
+            choiceTexts[i] = choice.GetComponentInChildren<TextMeshProUGUI>();
+            i++;
         }
+    }
 
-        activeMessage++;
-        if (activeMessage < currentMessages.Length) {
-            Message messageToDisplay = currentMessages[activeMessage];
-            if (messageToDisplay.choices.Length > 0) {
-                // Start a coroutine to create the buttons after a delay
-                StartCoroutine(CreateButtons(messageToDisplay));
-            } else {
-                DisplayMessage();
-            }
+    private void Update() {
+        if (!dialogueIsPlaying) return;
+
+        if (Input.GetKeyDown(KeyCode.F)) {
+            ContinueStory();
+        }
+    }
+
+    public void EnterDialogueMode(TextAsset inkJSON) {
+        currentStory = new Story(inkJSON.text);
+        dialogueIsPlaying = true;
+        dialoguePanel.SetActive(true);
+
+        ContinueStory();
+    }
+
+    private void ExitDialogueMode() {
+        dialogueIsPlaying = false;
+        dialoguePanel.SetActive(false);
+        dialogueText.text = "";
+    }
+
+    private void ContinueStory() {
+        if (currentStory.canContinue) {
+            dialogueText.text = currentStory.Continue();
+            DisplayChoices();
         } else {
-            Debug.Log("Conversation Ended");
-            backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
-            isActive = false;
-
-            ZoomOut();
-
-            // enable player movement
-            player.GetComponent<PlayerController>().enabled = true;
+            ExitDialogueMode();
         }
     }
 
-    IEnumerator CreateButtons(Message messageToDisplay) {
-        yield return new WaitForSeconds(0.5f); // Delay for 0.5 seconds
+    private void DisplayChoices() {
+        List<Choice> currentChoices = currentStory.currentChoices;
 
-        // Create a button for each choice in the current message
-        for (int i = 0; i < messageToDisplay.choices.Length; i++) {
-            Button button = Instantiate(buttonPrefab, buttonParent);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = messageToDisplay.choices[i];
-            int index = i; // Capture the index in a local variable
-            button.onClick.AddListener(() => {
-                MakeChoice(index);
-            });
-
-            // Animate the button in
-            LeanTween.scale(button.gameObject, Vector3.one, 0.5f).setEaseInOutExpo();
+        if (currentChoices.Count > 0) {
+            Debug.LogError("More choices were given the UI can support. Number of Choices" + currentChoices.Count);
         }
 
-        DisplayMessage();
-    }
-
-    // Function to zoom the camera in
-    void ZoomIn() {
-        Debug.Log("Zooming in");
-        // Set the starting and ending zoom values
-        float startZoom = composer.m_ZoomScale;
-        float endZoom = 0.5f;
-
-        // Start the smooth zoom
-        LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
-            // Set the camera's zoom value to the current animation value
-            composer.m_ZoomScale = val;
-        }).setEaseInOutExpo();
-    }
-
-    // Function to zoom the camera out
-    void ZoomOut() {
-        Debug.Log("Zooming out");
-        // Set the starting and ending zoom values
-        float startZoom = composer.m_ZoomScale;
-        float endZoom = 1;
-
-        // Start the smooth zoom
-        LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
-            // Set the camera's zoom value to the current animation value
-            composer.m_ZoomScale = val;
-        }).setEaseInOutExpo();
-    }
-
-    void MakeChoice(int choiceIndex) {
-        // Display the message corresponding to the chosen option
-        StopCoroutine("CreateButtons");
-        activeMessage = currentMessages[activeMessage].nextMessageIndices[choiceIndex];
-        foreach (Transform child in buttonParent) {
-            LeanTween.scale(child.gameObject, Vector3.zero, 0.5f).setEaseInOutExpo().setOnComplete(() => {
-                Destroy(child.gameObject);
-            });
+        int i = 0;
+        foreach (Choice choice in currentChoices) {
+            choices[i].gameObject.SetActive(true);
+            choiceTexts[i].text = choice.text;
+            i++;
         }
-
         
-        // Display the next message
-        NextMessage();
-    }
-
-    void AnimateTextColor() {
-        actorMessage.transform.localScale = Vector3.zero * -1;
-        LeanTween.scale(actorMessage.gameObject, Vector3.one, 0.5f).setEaseInOutExpo();
-        
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        backgroundBox.localScale = Vector3.zero;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // get e input
-        if (Input.GetKeyDown(KeyCode.E) && isActive) {
-            if (currentMessages[activeMessage].choices.Length > 0) {
-                // Don't do anything if the current message has choices
-                return;
-            }
-            NextMessage();
+        for (int j = i; j < choices.Length; j++) {
+            choices[j].gameObject.SetActive(false);
         }
+    }
+
+    public void ChooseChoice(int choiceIndex) {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        ContinueStory();
     }
 }
