@@ -1,7 +1,9 @@
 -> main
 
 === main ===
-Which pokemon do you choose?
+Hi, Rumyooo! #speaker:Lovelyn #portrait:lovelyn
+Hello, Lovelyn! #speaker:Rumyooo #portrait:rumyooo
+Which pokemon do you choose? #speaker:Lovelyn #portrait:lovelyn
     + [Charmander]
         -> chosen("Charmander")
     + [Bulbasaur]
