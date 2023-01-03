@@ -2215,9 +2215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a1dc0be99f4ca4bbe97da7aa6973fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typingSpeed: 0.01
   dialoguePanel: {fileID: 760243216}
   dialogueText: {fileID: 1284173685}
   speakerName: {fileID: 1417034351}
+  portrait: {fileID: 339342068}
+  continuePrompt: {fileID: 522755004}
   choices:
   - {fileID: 227483669}
   - {fileID: 650840337}

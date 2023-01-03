@@ -3,7 +3,7 @@
 === main ===
 Hi, Rumyooo! #speaker:Lovelyn #portrait:lovelyn
 Hello, Lovelyn! #speaker:Rumyooo #portrait:rumyooo
-Which pokemon do you choose? #speaker:Lovelyn #portrait:lovelyn
+Which <b><color=\#5B81FF>pokemon</color></b> do you choose? #speaker:Lovelyn #portrait:lovelyn
     + [Charmander]
         -> chosen("Charmander")
     + [Bulbasaur]

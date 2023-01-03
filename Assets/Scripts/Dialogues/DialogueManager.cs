@@ -9,11 +9,15 @@ public class DialogueManager : MonoBehaviour
 
     private static DialogueManager instance;
 
+    [Header("Params")]
+    [SerializeField] private float typingSpeed = 0.01f;
+
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI speakerName;
     [SerializeField] private Animator portrait;
+    [SerializeField] private GameObject continuePrompt;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -21,6 +25,9 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
     public  bool dialogueIsPlaying { get; private set; }
+    private bool canContinueToNextLine = false;
+
+    private Coroutine displayLineCoroutine;
 
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
@@ -50,7 +57,7 @@ public class DialogueManager : MonoBehaviour
     private void Update() {
         if (!dialogueIsPlaying) return;
 
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (canContinueToNextLine && Input.GetKeyDown(KeyCode.F) && currentStory.currentChoices.Count == 0) {
             ContinueStory();
         }
     }
@@ -74,13 +81,50 @@ public class DialogueManager : MonoBehaviour
 
     private void ContinueStory() {
         if (currentStory.canContinue) {
-            dialogueText.text = currentStory.Continue();
-            DisplayChoices();
+            // dialogueText.text = currentStory.Continue();
+            if (displayLineCoroutine != null) {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
             // handle tags
             HandleTags(currentStory.currentTags);
         } else {
             ExitDialogueMode();
         }
+    }
+
+    private IEnumerator DisplayLine(string line) {
+        dialogueText.text = "";
+
+        continuePrompt.SetActive(false);
+        HideChoices();
+
+        canContinueToNextLine = false;
+        
+        bool isAddingTextTag = false;
+
+        foreach (char c in line.ToCharArray()) {
+
+            if (Input.GetKeyDown(KeyCode.F)) {
+                dialogueText.text = line;
+                break;
+            }
+        
+            if (c == '<' && isAddingTextTag) {
+                isAddingTextTag = true;
+                dialogueText.text += c;
+                if (c == '>') {
+                    isAddingTextTag = false;
+                }
+            } else {
+                dialogueText.text += c;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+        }
+        canContinueToNextLine = true;
+        DisplayChoices();
+
+        continuePrompt.SetActive(true);
     }
 
     private void HandleTags(List<string> currentTags) {
@@ -125,8 +169,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void HideChoices() {
+        foreach (GameObject choice in choices) {
+            choice.SetActive(false);
+        }
+    }
+
     public void ChooseChoice(int choiceIndex) {
-        currentStory.ChooseChoiceIndex(choiceIndex);
-        ContinueStory();
+
+        if (canContinueToNextLine) {
+            currentStory.ChooseChoiceIndex(choiceIndex);
+            ContinueStory();
+        }
     }
 }
