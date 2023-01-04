@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI speakerName;
     [SerializeField] private Animator portrait;
     [SerializeField] private GameObject continuePrompt;
+    [SerializeField] private CinemachineRecomposer composer;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -28,6 +29,9 @@ public class DialogueManager : MonoBehaviour
     private bool canContinueToNextLine = false;
 
     private Coroutine displayLineCoroutine;
+
+    
+    private float duration = 0.5f;
 
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
@@ -62,10 +66,37 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void ZoomIn() {
+        Debug.Log("Zooming in");
+        // Set the starting and ending zoom values
+        float startZoom = composer.m_ZoomScale;
+        float endZoom = 0.5f;
+        // Start the smooth zoom
+        LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
+            // Set the camera's zoom value to the current animation value
+            composer.m_ZoomScale = val;
+        }).setEaseInOutExpo();
+    }
+    // Function to zoom the camera out
+    public void ZoomOut() {
+        Debug.Log("Zooming out");
+        // Set the starting and ending zoom values
+        float startZoom = composer.m_ZoomScale;
+        float endZoom = 1;
+        // Start the smooth zoom
+        LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
+            // Set the camera's zoom value to the current animation value
+            composer.m_ZoomScale = val;
+        }).setEaseInOutExpo();
+    }
+
     public void EnterDialogueMode(TextAsset inkJSON) {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
-        dialoguePanel.SetActive(true);
+        // setoncomplete leantween seteaseinoutexpo
+        LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(true));
+
+        ZoomIn();
 
         speakerName.text = "";
         portrait.Play("default");
@@ -75,8 +106,10 @@ public class DialogueManager : MonoBehaviour
 
     private void ExitDialogueMode() {
         dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        LeanTween.scale(dialoguePanel, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(false));
         dialogueText.text = "";
+
+        ZoomOut();
     }
 
     private void ContinueStory() {
