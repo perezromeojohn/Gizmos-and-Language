@@ -54,8 +54,5 @@ public class DialogueTrigger : MonoBehaviour
             // LeanTween scale of visual cue to 1
             LeanTween.scale(visualCue, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => visualCue.SetActive(false));
         }
-        
-
-        
     }
 }
