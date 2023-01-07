@@ -3253,7 +3253,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 5
-  m_Spacing: 0
+  m_Spacing: 39.43
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -12372,8 +12372,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ebdbeec08496b2146ba6b9b245947a2e, type: 2}
-  m_sharedMaterial: {fileID: -736508877407514251, guid: ebdbeec08496b2146ba6b9b245947a2e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a8c89ccfc9e50c04e809ca4002bda4b2, type: 2}
+  m_sharedMaterial: {fileID: 7358241347277434605, guid: a8c89ccfc9e50c04e809ca4002bda4b2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12397,7 +12397,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 39.15
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17657,8 +17657,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2a47fac787f00894aadf05a8e1fce12e, type: 2}
-  m_sharedMaterial: {fileID: 6422434644265890215, guid: 2a47fac787f00894aadf05a8e1fce12e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a8c89ccfc9e50c04e809ca4002bda4b2, type: 2}
+  m_sharedMaterial: {fileID: 7358241347277434605, guid: a8c89ccfc9e50c04e809ca4002bda4b2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
