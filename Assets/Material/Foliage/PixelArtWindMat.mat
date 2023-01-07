@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PixelArtWindMat
-  m_Shader: {fileID: -6465566751694194690, guid: 8215843ab1b9c25439cc6272897eeb14, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f56235c86ea402445b27182f21b836e2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -73,9 +73,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_079e72c9808c4394bbb7d8c05abf27f6: 5
+    - Vector1_4308d9ffadbd40daba50b19cc2b5a14b: 0.3
     - Vector1_441690af4bee4188a40e7d17126672a1: 0.1
+    - Vector1_452608b293c94890ba236de3f3fc8a19: 500
     - Vector1_4ba476a0c192408698f38ec9a5291995: 0.3
     - Vector1_6b04f86cfc374580b5c724666bcf8610: 500
+    - Vector1_ae3343168fd64596ae79a521c5def82c: 5
+    - Vector1_f5aaba9d1fec4e1382c0d8c6018d331f: 0.1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1

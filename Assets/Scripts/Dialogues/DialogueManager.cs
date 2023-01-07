@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Zooming in");
         // Set the starting and ending zoom values
         float startZoom = composer.m_ZoomScale;
-        float endZoom = 0.5f;
+        float endZoom = 0.7f;
         // Start the smooth zoom
         LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
             // Set the camera's zoom value to the current animation value
