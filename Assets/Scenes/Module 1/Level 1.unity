@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Room 2
   transitionSphere: {fileID: 1180843797}
+  composer: {fileID: 1730461788}
 --- !u!212 &11536605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13598,6 +13599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Room 1
   transitionSphere: {fileID: 1180843797}
+  composer: {fileID: 1730461788}
 --- !u!212 &680934213
 SpriteRenderer:
   m_ObjectHideFlags: 0

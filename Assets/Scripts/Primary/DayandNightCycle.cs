@@ -8,7 +8,7 @@ public class DayandNightCycle : MonoBehaviour
 {
     public Volume ppv; // this is the post processing volume
  
-    public float tick; // Increasing the tick, increases second rate
+    public float tick = 500; // Increasing the tick, increases second rate
     public float seconds; 
     public int mins;
     public int hours;
@@ -28,6 +28,25 @@ public class DayandNightCycle : MonoBehaviour
         CalcTime();
         // DisplayTime();
      
+    }
+
+    void OnEnable()
+    {
+        tick = PlayerPrefs.GetFloat("tick", tick);
+        seconds = PlayerPrefs.GetFloat("seconds", seconds);
+        mins = PlayerPrefs.GetInt("mins", mins);
+        hours = PlayerPrefs.GetInt("hours", hours);
+        days = PlayerPrefs.GetInt("days", days);
+    }
+
+    void OnDisable()
+    {
+        PlayerPrefs.SetFloat("tick", tick);
+        PlayerPrefs.SetFloat("seconds", seconds);
+        PlayerPrefs.SetInt("mins", mins);
+        PlayerPrefs.SetInt("hours", hours);
+        PlayerPrefs.SetInt("days", days);
+        PlayerPrefs.Save();
     }
  
     public void CalcTime() // Used to calculate sec, min and hours

@@ -8,6 +8,7 @@ public class PlayerSpawn : MonoBehaviour
     public string[] sceneNames;
     public Vector3[] spawnPositions;
     private int spawnIndex;
+    
 
     void Start()
     {

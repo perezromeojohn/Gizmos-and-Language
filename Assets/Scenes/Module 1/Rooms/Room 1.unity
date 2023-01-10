@@ -1222,6 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionSphere: {fileID: 144736732}
+  composer: {fileID: 1730461788}
   position: {x: -1.8521303, y: 0.90786755}
   sceneName: Level 1
 --- !u!61 &473913648
@@ -2783,11 +2784,6 @@ MonoBehaviour:
 --- !u!4 &1112902424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6332061290449182415, guid: fbf9c8fbcd68b864f85954ca4ce64850, type: 3}
-  m_PrefabInstance: {fileID: 6332061289147948925}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1211306562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2831369125878427405, guid: fbf9c8fbcd68b864f85954ca4ce64850, type: 3}
   m_PrefabInstance: {fileID: 6332061289147948925}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1284173683
@@ -4379,7 +4375,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1382317488}
   - component: {fileID: 1382317487}
-  - component: {fileID: 1382317489}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -4418,37 +4413,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1382317489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382317486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7b42f590d48fb44aa3593a5c62676ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ppv: {fileID: 1382317487}
-  tick: 0
-  seconds: 0
-  mins: 0
-  hours: 0
-  days: 1
-  activateLights: 0
-  lights:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1211306562}
-  - {fileID: 0}
 --- !u!1 &1417034349
 GameObject:
   m_ObjectHideFlags: 0
