@@ -15,6 +15,7 @@ public class DayandNightCycle : MonoBehaviour
     public int days = 1;
  
     public bool activateLights; // checks if lights are on
+    bool lightsOffDuringDawn = false; // checks if lights are off during dawn
     public GameObject[] lights; // all the lights we want on when its dark
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,15 @@ public class DayandNightCycle : MonoBehaviour
     {
         CalcTime();
         // DisplayTime();
+        if(hours>=6 && hours<7 && !lightsOffDuringDawn) {
+            for (int i = 0; i < lights.Length; i++)
+            {
+                if(lights[i] != null) {
+                    lights[i].SetActive(false);
+                }
+            }
+            lightsOffDuringDawn = true;
+        }
      
     }
 
@@ -37,6 +47,17 @@ public class DayandNightCycle : MonoBehaviour
         mins = PlayerPrefs.GetInt("mins", mins);
         hours = PlayerPrefs.GetInt("hours", hours);
         days = PlayerPrefs.GetInt("days", days);
+        ppv.weight = PlayerPrefs.GetFloat("ppvWeight", ppv.weight);
+
+        activateLights = false;
+        for (int i = 0; i < lights.Length; i++)
+        {
+            if(lights[i] != null) {
+                string key = "light" + i;
+                int value = PlayerPrefs.GetInt(key, lights[i].activeSelf ? 1 : 0);
+                lights[i].SetActive(value == 1);
+            }
+        }
     }
 
     void OnDisable()
@@ -46,6 +67,17 @@ public class DayandNightCycle : MonoBehaviour
         PlayerPrefs.SetInt("mins", mins);
         PlayerPrefs.SetInt("hours", hours);
         PlayerPrefs.SetInt("days", days);
+        PlayerPrefs.SetFloat("ppvWeight", ppv.weight);
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            if(lights[i] != null) {
+                string key = "light" + i;
+                int value = lights[i].activeSelf ? 1 : 0;
+                PlayerPrefs.SetInt(key, value);
+            }
+        }
+
         PlayerPrefs.Save();
     }
  
