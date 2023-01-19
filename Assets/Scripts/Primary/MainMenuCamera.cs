@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainMenuCamera : MonoBehaviour
 {
-    public float speed = 1f;
+    public float speed = 5f;
     public GameObject boundsGO;
     private Vector3 direction;
     private Vector3 lastDirection;

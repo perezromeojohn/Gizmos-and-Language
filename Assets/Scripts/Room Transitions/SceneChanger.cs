@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public string sceneName;
-    [SerializeField] private RectTransform transitionSphere;
+    [SerializeField] private GameObject transitionBox;
     [SerializeField] private CinemachineRecomposer composer;
 
     private void Start() {
-        transitionSphere.gameObject.SetActive(true);
+        transitionBox.gameObject.SetActive(true);
 
-        LeanTween.scale(transitionSphere, new Vector3(1, 1, 1), 0f);
-        LeanTween.scale(transitionSphere, new Vector3(0, 0, 0), 0.6f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() => {
-            transitionSphere.gameObject.SetActive(false);
+        LeanTween.scale(transitionBox, new Vector3(1, 1, 1), 0f);
+        LeanTween.scaleY(transitionBox, 0, 1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
+            transitionBox.gameObject.SetActive(false);
         });
     }
 
@@ -22,10 +22,10 @@ public class SceneChanger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            transitionSphere.gameObject.SetActive(true);
-            LeanTween.scale(transitionSphere, new Vector3(0, 0, 0), 0f);
-            LeanTween.scale(transitionSphere, new Vector3(1, 1, 1), 0.6f).setEase(LeanTweenType.easeInQuad).setOnComplete(() => {
-                ZoomIn();
+            transitionBox.gameObject.SetActive(true);
+            LeanTween.scale(transitionBox, new Vector3(0, 0, 0), 0f);
+            LeanTween.scaleY(transitionBox, 0, 1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
+                transitionBox.gameObject.SetActive(false);
             });
         }
     }
