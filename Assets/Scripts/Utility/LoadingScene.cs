@@ -32,7 +32,7 @@ public class LoadingScene : MonoBehaviour
         loadingGraphic.SetActive(true);
 
         do {
-            await Task.Delay(100);
+            await Task.Delay(3000);
             Debug.Log("Loading progress: " + scene.progress);
         } while (scene.progress < 0.9f);
         scene.allowSceneActivation = true;

@@ -1,34 +1,31 @@
 fileFormatVersion: 2
-guid: ef6527c4f6a5ba94fb0fc35bf6fbc540
+guid: 444654461d6ac3445b72044f73b23259
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4030792056451597264
-    second: spr_idle_strip9_0
+      213: -4535197531673927575
+    second: playerRun_0
   - first:
-      213: -5365564782989775432
-    second: spr_idle_strip9_1
+      213: 4930014388355629251
+    second: playerRun_1
   - first:
-      213: 6715623495978055766
-    second: spr_idle_strip9_2
+      213: -8762322290987676394
+    second: playerRun_2
   - first:
-      213: 3774113280150707286
-    second: spr_idle_strip9_3
+      213: -4488786312590717477
+    second: playerRun_3
   - first:
-      213: -4501305681423134738
-    second: spr_idle_strip9_4
+      213: -4041032736606025806
+    second: playerRun_4
   - first:
-      213: -8277829666597408865
-    second: spr_idle_strip9_5
+      213: -4648522750931174011
+    second: playerRun_5
   - first:
-      213: -5244714908019811940
-    second: spr_idle_strip9_6
+      213: 8281386763173148677
+    second: playerRun_6
   - first:
-      213: 6186845273662153763
-    second: spr_idle_strip9_7
-  - first:
-      213: 5964124631905109449
-    second: spr_idle_strip9_8
+      213: -2780857131773966098
+    second: playerRun_7
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -131,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_idle_strip9_0
+      name: playerRun_0
       rect:
         serializedVersion: 2
         x: 0
@@ -145,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03c7cbf0bffbf08c0800000000000000
-      internalID: -4030792056451597264
+      spriteID: 960e85a9fddbf01c0800000000000000
+      internalID: -4535197531673927575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_idle_strip9_1
+      name: playerRun_1
       rect:
         serializedVersion: 2
         x: 96
@@ -166,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bd6c82024fa985b0800000000000000
-      internalID: -5365564782989775432
+      spriteID: 3c0808347fdea6440800000000000000
+      internalID: 4930014388355629251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_idle_strip9_2
+      name: playerRun_2
       rect:
         serializedVersion: 2
         x: 192
@@ -187,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 658f90b1dffa23d50800000000000000
-      internalID: 6715623495978055766
+      spriteID: 61d41361d4af56680800000000000000
+      internalID: -8762322290987676394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_idle_strip9_3
+      name: playerRun_3
       rect:
         serializedVersion: 2
         x: 288
@@ -208,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65c977d3808506430800000000000000
-      internalID: 3774113280150707286
+      spriteID: bdd056d91a0a4b1c0800000000000000
+      internalID: -4488786312590717477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_idle_strip9_4
+      name: playerRun_4
       rect:
         serializedVersion: 2
         x: 384
@@ -229,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eef8359e4562881c0800000000000000
-      internalID: -4501305681423134738
+      spriteID: 2b78fd8e22e5be7c0800000000000000
+      internalID: -4041032736606025806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_idle_strip9_5
+      name: playerRun_5
       rect:
         serializedVersion: 2
         x: 480
@@ -250,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9f654ba6cd3f1d80800000000000000
-      internalID: -8277829666597408865
+      spriteID: 58dfc6cdf212d7fb0800000000000000
+      internalID: -4648522750931174011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_idle_strip9_6
+      name: playerRun_6
       rect:
         serializedVersion: 2
         x: 576
@@ -271,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c99984f24970737b0800000000000000
-      internalID: -5244714908019811940
+      spriteID: 508be8a62656de270800000000000000
+      internalID: 8281386763173148677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_idle_strip9_7
+      name: playerRun_7
       rect:
         serializedVersion: 2
         x: 672
@@ -292,29 +289,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 324efe04ff61cd550800000000000000
-      internalID: 6186845273662153763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_idle_strip9_8
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 96
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c58cd0e0c3d4c250800000000000000
-      internalID: 5964124631905109449
+      spriteID: ee840891c296869d0800000000000000
+      internalID: -2780857131773966098
       vertices: []
       indices: 
       edges: []

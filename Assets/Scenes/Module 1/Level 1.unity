@@ -23782,6 +23782,14 @@ PrefabInstance:
       propertyPath: spawnPositions.Array.data[1].y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6332061290449182412, guid: fbf9c8fbcd68b864f85954ca4ce64850, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1416604817420825889, guid: 29a9d35c1d2fc4e44b2116122e63338c, type: 3}
+    - target: {fileID: 6332061290449182412, guid: fbf9c8fbcd68b864f85954ca4ce64850, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6332061290449182415, guid: fbf9c8fbcd68b864f85954ca4ce64850, type: 3}
       propertyPath: m_RootOrder
       value: 2
