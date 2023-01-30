@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.01f;
 
     [Header("Dialogue UI")]
+    [SerializeField] private GameObject controlsPanel;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI speakerName;
@@ -93,8 +94,11 @@ public class DialogueManager : MonoBehaviour
     public void EnterDialogueMode(TextAsset inkJSON) {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
-        // setoncomplete leantween seteaseinoutexpo
-        LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(true));
+        dialoguePanel.SetActive(true);
+        // leanTween scale setoncomplete set to false the controls panel
+        LeanTween.scaleY(controlsPanel, 0, 0.3f).setEaseInOutExpo().setOnComplete(() => controlsPanel.SetActive(false));
+        // LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(true));
+        LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo();
 
         ZoomIn();
 
@@ -106,6 +110,8 @@ public class DialogueManager : MonoBehaviour
 
     private void ExitDialogueMode() {
         dialogueIsPlaying = false;
+        controlsPanel.SetActive(true);
+        LeanTween.scale(controlsPanel, Vector3.one, 0.3f).setEaseInOutExpo();
         LeanTween.scale(dialoguePanel, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(false));
         dialogueText.text = "";
 
