@@ -11,6 +11,8 @@ public class LoadingScene : MonoBehaviour
     [SerializeField] private GameObject transitionBox;
     [SerializeField] private GameObject loadingGraphic;
 
+    [SerializeField] private int loadingTime = 1000;
+
     void Awake() {
         if (instance == null) {
             instance = this;
@@ -32,7 +34,7 @@ public class LoadingScene : MonoBehaviour
         loadingGraphic.SetActive(true);
 
         do {
-            await Task.Delay(3000);
+            await Task.Delay(loadingTime);
             Debug.Log("Loading progress: " + scene.progress);
         } while (scene.progress < 0.9f);
         scene.allowSceneActivation = true;

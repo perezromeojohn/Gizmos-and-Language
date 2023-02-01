@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
@@ -8,6 +9,9 @@ public class SceneChanger : MonoBehaviour
     public string sceneName;
     [SerializeField] private GameObject transitionBox;
     [SerializeField] private CinemachineRecomposer composer;
+
+    // get player
+    public static bool playerEntered = false;
 
     private void Start() {
         transitionBox.gameObject.SetActive(true);
@@ -22,11 +26,13 @@ public class SceneChanger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Player entered trigger");
             transitionBox.gameObject.SetActive(true);
-            LeanTween.scale(transitionBox, new Vector3(0, 0, 0), 0f);
-            LeanTween.scaleY(transitionBox, 0, 1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
-                transitionBox.gameObject.SetActive(false);
+            LeanTween.scale(transitionBox, new Vector3(1, 0, 1), 0f);
+            LeanTween.scaleY(transitionBox, 1, 1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
+                SceneManager.LoadScene(sceneName);
             });
+            playerEntered = true;
         }
     }
 

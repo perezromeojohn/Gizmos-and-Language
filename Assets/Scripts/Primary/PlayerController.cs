@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // reset the static bools for movement
+        SceneChanger.playerEntered = false;
+        OverWorldSceneChanger.playerExited = false;
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -25,8 +29,22 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update() {
-        if (DialogueManager.GetInstance().dialogueIsPlaying)  {
-            // get the player input component and disable it
+        // if (DialogueManager.GetInstance().dialogueIsPlaying)  {
+        //     // get the player input component and disable it
+        //     playerInput.enabled = false;
+        // } else {
+        //     playerInput.enabled = true;
+        // }
+        
+        // // get the static bool from the scene changer
+        // if (SceneChanger.playerEntered) {
+        //     // disable the player input component
+        //     playerInput.enabled = false;
+        // } else {
+        //     playerInput.enabled = true;
+        // }
+        // merge the two if statements
+        if (DialogueManager.GetInstance().dialogueIsPlaying || SceneChanger.playerEntered || OverWorldSceneChanger.playerExited) {
             playerInput.enabled = false;
         } else {
             playerInput.enabled = true;
