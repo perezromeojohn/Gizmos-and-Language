@@ -5,19 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Main Menu/Main Menu.unity
-    guid: 8a2258e28fe759a44957a0319690af0f
-  - enabled: 1
-    path: Assets/Scenes/Module 1/Level 1.unity
-    guid: 1fe0112bd1128c8469c940a91fb69945
-  - enabled: 1
-    path: Assets/Scenes/Module 1/Rooms/Room 1.unity
-    guid: 6383120b1ba614c47823aaa9eb1df952
   - enabled: 0
-    path: Assets/Scenes/Module 1/Rooms/Room 2.unity
-    guid: e43dc31749f5524489c084c4e902ffd6
+    path: Assets/BlocksEngine2/Scenes/BE2SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/Main Menu/Settings.unity
-    guid: b7af6e42b2eb35d41a9d4ead38ea392c
+    path: Assets/BlocksEngine2_Horizontal/Scenes/HorizontalBE2SampleScene.unity
+    guid: 294291218165234658366afe54f7cb81
+  - enabled: 1
+    path: Assets/BlocksEngine2/Scenes/BE2MultipleTargetObjects.unity
+    guid: 0333588ed2034d28cbcc190ca5aeeb80
+  - enabled: 0
+    path: Assets/BlocksEngine2_SciFi/Scenes/ScifiBE2SampleScene.unity
+    guid: 28db5afba24f900ba844c731679c8717
   m_configObjects: {}

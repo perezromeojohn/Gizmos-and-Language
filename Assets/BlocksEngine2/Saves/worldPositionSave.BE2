@@ -1,0 +1,71 @@
+<Block>
+  <blockName>Block Ins MoveForward</blockName>
+  <position>(48.1, -1071.6, 0.0)</position>
+  <isVariable>false</isVariable>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>1</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins RotateAxis</blockName>
+  <position>(560.8, -1098.2, 0.0)</position>
+  <isVariable>false</isVariable>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>Y axis</value>
+        </Input>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>-30</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins WhenJoystickKeyPressed</blockName>
+  <position>(610.8, -120.8, 0.0)</position>
+  <isVariable>false</isVariable>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>Up</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins WhenPlayClicked</blockName>
+  <position>(46.6, -123.4, 0.0)</position>
+  <isVariable>false</isVariable>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#
