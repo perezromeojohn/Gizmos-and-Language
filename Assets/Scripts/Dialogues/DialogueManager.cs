@@ -12,6 +12,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.01f;
 
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
+
     [Header("Dialogue UI")]
     [SerializeField] private GameObject controlsPanel;
     [SerializeField] private GameObject dialoguePanel;
@@ -30,8 +33,7 @@ public class DialogueManager : MonoBehaviour
     private bool canContinueToNextLine = false;
 
     private Coroutine displayLineCoroutine;
-
-    
+    private DialogueVariables dialogueVariables;
     private float duration = 0.5f;
 
     private const string SPEAKER_TAG = "speaker";
@@ -41,6 +43,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("More than one instance of DialogueManager found!");
         }
         instance = this;
+
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
     public static DialogueManager GetInstance() {
@@ -102,6 +106,8 @@ public class DialogueManager : MonoBehaviour
 
         ZoomIn();
 
+        dialogueVariables.StartListening(currentStory);
+
         speakerName.text = "";
         portrait.Play("default");
 
@@ -109,6 +115,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     private void ExitDialogueMode() {
+        dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
         controlsPanel.SetActive(true);
         LeanTween.scale(controlsPanel, Vector3.one, 0.3f).setEaseInOutExpo();
@@ -219,6 +226,22 @@ public class DialogueManager : MonoBehaviour
         if (canContinueToNextLine) {
             currentStory.ChooseChoiceIndex(choiceIndex);
             ContinueStory();
+        }
+    }
+
+    public Ink.Runtime.Object GetVariableState(string variableName) {
+        Ink.Runtime.Object variableState = null;
+        dialogueVariables.variables.TryGetValue(variableName, out variableState);
+
+        if (variableState == null) {
+            Debug.LogError("Variable " + variableName + " does not exist");
+        }
+        return variableState;
+    }
+
+    public void OnApplicationQuit() {
+        if (dialogueVariables != null) {
+            dialogueVariables.SaveVariables();
         }
     }
 }

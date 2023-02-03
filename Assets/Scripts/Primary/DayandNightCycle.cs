@@ -32,6 +32,17 @@ public class DayandNightCycle : MonoBehaviour
             }
             activateLights = true;
         }
+
+        // if hour is greater than 6 and less than 18, turn the lights off
+        if(hours>=6 && hours<18) {
+            for (int i = 0; i < lights.Length; i++)
+            {
+                if(lights[i] != null) {
+                    lights[i].SetActive(false);
+                }
+            }
+            lightsOffDuringDawn = true;
+        }
     }
  
     // Update is called once per frame
@@ -151,6 +162,27 @@ public class DayandNightCycle : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnApplicationQuit()
+    {
+        PlayerPrefs.SetFloat("tick", tick);
+        PlayerPrefs.SetFloat("seconds", seconds);
+        PlayerPrefs.SetInt("mins", mins);
+        PlayerPrefs.SetInt("hours", hours);
+        PlayerPrefs.SetInt("days", days);
+        PlayerPrefs.SetFloat("ppvWeight", ppv.weight);
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            if(lights[i] != null) {
+                string key = "light" + i;
+                int value = lights[i].activeSelf ? 1 : 0;
+                PlayerPrefs.SetInt(key, value);
+            }
+        }
+
+        PlayerPrefs.Save();
     }
  
     // public void DisplayTime() // Shows time and day in ui
