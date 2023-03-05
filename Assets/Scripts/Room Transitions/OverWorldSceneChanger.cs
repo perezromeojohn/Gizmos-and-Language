@@ -6,18 +6,17 @@ using UnityEngine.SceneManagement;
 public class OverWorldSceneChanger : MonoBehaviour
 {
 
-    [SerializeField] private GameObject transitionBox;
+    [SerializeField] private RectTransform transitionSphere;
     [SerializeField] private CinemachineRecomposer composer;
     public Vector2 position; // position to move player to in next scene
     public string sceneName; // name of next scene to load
-    public static bool playerExited = false;
 
     private void Start() {
-        transitionBox.gameObject.SetActive(true);
+        transitionSphere.gameObject.SetActive(true);
 
-        LeanTween.scale(transitionBox, new Vector3(1, 1, 1), 0f);
-        LeanTween.scaleY(transitionBox, 0, 1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
-            transitionBox.gameObject.SetActive(false);
+        LeanTween.scale(transitionSphere, new Vector3(1, 1, 1), 0f);
+        LeanTween.scale(transitionSphere, new Vector3(0, 0, 0), 0.6f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() => {
+            transitionSphere.gameObject.SetActive(false);
         });
     }
 
@@ -25,16 +24,15 @@ public class OverWorldSceneChanger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            transitionBox.gameObject.SetActive(true);
+            transitionSphere.gameObject.SetActive(true);
             // save player position for next scene
             PlayerPrefs.SetFloat("playerX", position.x);
             PlayerPrefs.SetFloat("playerY", position.y);
 
-            LeanTween.scale(transitionBox, new Vector3(1, 0, 1), 0f);
-            LeanTween.scaleY(transitionBox, 1, 1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
-                SceneManager.LoadScene(sceneName);
+            LeanTween.scale(transitionSphere, new Vector3(0, 0, 0), 0f);
+            LeanTween.scale(transitionSphere, new Vector3(1, 1, 1), 0.6f).setEase(LeanTweenType.easeInQuad).setOnComplete(() => {
+                ZoomIn();
             });
-            playerExited = true;
         }
     }
 

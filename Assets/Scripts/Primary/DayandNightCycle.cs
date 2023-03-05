@@ -21,17 +21,6 @@ public class DayandNightCycle : MonoBehaviour
     void Start()
     {
         ppv = gameObject.GetComponent<Volume>();
-
-        // if hour is greater than 19 and less than 6, turn the lights on
-        if(hours>=19 || hours<6) {
-            for (int i = 0; i < lights.Length; i++)
-            {
-                if(lights[i] != null) {
-                    lights[i].SetActive(true);
-                }
-            }
-            activateLights = true;
-        }
     }
  
     // Update is called once per frame
