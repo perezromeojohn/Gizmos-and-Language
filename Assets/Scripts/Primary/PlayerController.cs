@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // playerprefs player current position
     public float moveSpeed = 0.5f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;

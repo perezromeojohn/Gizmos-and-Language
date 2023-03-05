@@ -1,23 +1,27 @@
 -> main
 
 === main ===
-Hey Rumyooo, have you tried block coding before? #speaker:Von #portrait:von
-Yes, I have. I've been doing it for a little while now. #speaker:Rumyooo #portrait:rumyooo
+Hey Rumyooo, have you ever done any programming before? #speaker:Von #portrait:von
+No, I haven't. What is programming all about? #speaker:Rumyooo #portrait:rumyooo
 
-Great! Can you tell me what you think about it? #speaker:Von #portrait:von
+Programming is all about using a programming language to tell a computer what to do. It involves #speaker:Von #portrait:von
+writing code, debugging, and problem solving. #speaker:Von #portrait:von
 
-I think it's a great way to get started with programming. The blocks make it easier to understand the logic behind coding. #speaker:Rumyooo #portrait:rumyooo
+That sounds interesting. #speaker:Rumyooo #portrait:rumyooo
+Do you have any tips for someone who is just starting out with programming? 
 
-I totally agree! Do you know how block coding can be related to something in the real world? #speaker:Von #portrait:von
 
-Interesting question. Let me think... I think block coding can be related to tilling crops. #speaker:Rumyooo #portrait:rumyooo
+Sure! Here are a few tips for someone who is just starting out with programming:#speaker:Von #portrait:von
 
-Really? How so? #speaker:Von #portrait:von
+1. Start with a programming language that is easy to learn, such as Python or Scratch.
+2. Don't be afraid to make mistakes and ask for help.
+3. Practice, practice, practice! The more you code, the better you'll become.
+4. Work on small projects to build up your skills and confidence.
+5. Learn about debugging techniques and how to use them to fix your code.
 
-Well, when you till crops, you break up the soil into smaller, manageable pieces. Similarly, with block coding, 
-you break down a problem into smaller, manageable blocks of code that can be easily understood and solved. #speaker:Rumyooo #portrait:rumyooo
+I hope these tips are helpful! #speaker:Von #portrait:von
 
-That's a great analogy! I've never thought of it that way. Thanks, Rumyooo! #speaker:Von #portrait:von
+Thanks, Von. I'll definitely keep them in mind. #speaker:Rumyooo #portrait:rumyooo
 
-You're welcome, Von. I'm glad I could help. #speaker:Rumyooo #portrait:rumyooo
+You're welcome! Good luck with your programming journey. #speaker:Von #portrait:von
 -> END
