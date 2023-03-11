@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,18 +16,16 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // off set the image panel attached to the canvas in x direction 267 and then create a set on complete function
-        // LeanTween.moveX(panel.gameObject, 80, 3f).setEaseOutQuint().setOnComplete(() => {
-        //     // for (int i = 0; i < buttons.Length; i++) lean scale the buttons individually with a .5f delay
-        //     for (int i = 0; i < buttons.Length; i++) {
-        //         LeanTween.scale(buttons[i], new Vector3(1, 1, 1), 0.5f).setEase(LeanTweenType.easeInOutExpo).setDelay(0.3f + (i * 0.3f));
-        //     }
-        // });
-        // LeanTween.delayedCall(3f, () => {
-        //     for (int i = 0; i < buttons.Length; i++) {
-        //         LeanTween.scale(buttons[i], new Vector3(1, 1, 1), 0.5f).setEase(LeanTweenType.easeInOutExpo).setDelay(0.3f + (i * 0.3f));
-        //     }
-        // });
+        // add a dotween delay before the buttons are scaled
+
+        buttons[4].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.3f);
+        buttons[3].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.3f);
+        buttons[2].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.6f);
+        buttons[1].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.9f);
+        buttons[0].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(1.2f);
+        
+
+        
     }
 
     // Update is called once per frame

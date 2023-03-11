@@ -1,0 +1,122 @@
+<Block>
+  <blockName>Block Ins Return</blockName>
+  <position>(364.7, 413.6, 0.0)</position>
+  <isVariable>false</isVariable>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins MoveForward</blockName>
+  <position>(302.2, 164.3, 0.0)</position>
+  <isVariable>false</isVariable>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs>
+        <Input>
+          <isOperation>false</isOperation>
+          <value>8</value>
+        </Input>
+      </inputs>
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
+  <blockName>Block Ins WhenPlayClicked</blockName>
+  <position>(275.2, 403.4, 0.0)</position>
+  <isVariable>false</isVariable>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins TranslateToPosition</blockName>
+          <position>(275.2, 365.9, 0.0)</position>
+          <isVariable>false</isVariable>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>0</value>
+                </Input>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>0</value>
+                </Input>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>0</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+        <Block>
+          <blockName>Block Ins Repeat</blockName>
+          <position>(275.2, 338.3, 0.0)</position>
+          <isVariable>false</isVariable>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks>
+                <Block>
+                  <blockName>Block Ins SlideForward</blockName>
+                  <position>(283.1, 310.7, 0.0)</position>
+                  <isVariable>false</isVariable>
+                  <varName />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>8</value>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+                <Block>
+                  <blockName>Block Ins TurnDirection</blockName>
+                  <position>(283.1, 283.1, 0.0)</position>
+                  <isVariable>false</isVariable>
+                  <varName />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>Left</value>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+              </childBlocks>
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>5</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#

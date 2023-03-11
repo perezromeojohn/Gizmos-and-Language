@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public interface I_BE2_Drag
+{
+    /// <summary>
+    /// Prepares the block to possibly be dragged
+    /// </summary>
+    void OnPointerDown();
+
+    /// <summary>
+    /// Opens up the context menu
+    /// </summary>
+    void OnRightPointerDownOrHold();
+    
+    /// <summary>
+    /// Keeps detecting possible drop spots 
+    /// </summary>
+    void OnDrag();
+    
+    /// <summary>
+    /// Places the block into a found spot, programming env, or deletes it
+    /// </summary>
+    void OnPointerUp();
+
+    Transform Transform { get; }
+    Vector2 RayPoint { get; }
+    I_BE2_Block Block { get; }
+    List<I_BE2_Block> ChildBlocks { get; }
+}

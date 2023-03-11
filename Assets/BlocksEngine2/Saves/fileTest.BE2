@@ -1,0 +1,86 @@
+<Block>
+  <blockName>Block Ins WhenPlayClicked</blockName>
+  <position>(190.1, -208.2, 0.0)</position>
+  <isVariable>false</isVariable>
+  <varName />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins Repeat</blockName>
+          <position>(0.0, 10.0, 0.0)</position>
+          <isVariable>false</isVariable>
+          <varName />
+          <sections>
+            <Section>
+              <childBlocks>
+                <Block>
+                  <blockName>Block Ins MoveForward</blockName>
+                  <position>(20.0, 10.0, 0.0)</position>
+                  <isVariable>false</isVariable>
+                  <varName />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>1</value>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+                <Block>
+                  <blockName>Block Ins BreakLoop</blockName>
+                  <position>(20.0, -60.0, 0.0)</position>
+                  <isVariable>false</isVariable>
+                  <varName />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs />
+                    </Section>
+                  </sections>
+                </Block>
+                <Block>
+                  <blockName>Block Ins TranslateToPosition</blockName>
+                  <position>(20.0, -130.0, 0.0)</position>
+                  <isVariable>false</isVariable>
+                  <varName />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>0</value>
+                        </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>0</value>
+                        </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>0</value>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+              </childBlocks>
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value>5</value>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#
