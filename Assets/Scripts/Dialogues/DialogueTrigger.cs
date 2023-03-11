@@ -36,9 +36,9 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(true);
 
             // LeanTween position of visual cue to y 0.25f
-            LeanTween.moveLocalY(visualCue, 0.25f, 0.3f).setEaseInOutExpo();
-            // LeanTween scale of visual cue to 1
-            LeanTween.scale(visualCue, Vector3.one, 0.3f).setEaseInOutExpo();         
+            // LeanTween.moveLocalY(visualCue, 0.25f, 0.3f).setEaseInOutExpo();
+            // // LeanTween scale of visual cue to 1
+            // LeanTween.scale(visualCue, Vector3.one, 0.3f).setEaseInOutExpo();         
 
         }
     }
@@ -50,9 +50,9 @@ public class DialogueTrigger : MonoBehaviour
         {
             playerInRange = false;
             // LeanTween position of visual cue to y 0.25f
-            LeanTween.moveLocalY(visualCue, 0.0f, 0.3f).setEaseInOutExpo();
-            // LeanTween scale of visual cue to 1
-            LeanTween.scale(visualCue, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => visualCue.SetActive(false));
+            // LeanTween.moveLocalY(visualCue, 0.0f, 0.3f).setEaseInOutExpo();
+            // // LeanTween scale of visual cue to 1
+            // LeanTween.scale(visualCue, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => visualCue.SetActive(false));
         }
     }
 }

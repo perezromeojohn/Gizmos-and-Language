@@ -21,35 +21,35 @@ public class LevelIndicator : MonoBehaviour
         text.text = levelName;
 
         // Fade in the image, bgImage, and text
-        LeanTween.delayedCall(1f, () => {
-            if (image != null) {
-                LeanTween.alpha(image.rectTransform, 1, 1f);
-            }
-            if (text != null) {
-                LeanTween.value(0, 1, 1f).setOnUpdate((float alpha) => {
-                    text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
-                });
-            }
-        });
+        // LeanTween.delayedCall(1f, () => {
+        //     if (image != null) {
+        //         LeanTween.alpha(image.rectTransform, 1, 1f);
+        //     }
+        //     if (text != null) {
+        //         LeanTween.value(0, 1, 1f).setOnUpdate((float alpha) => {
+        //             text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+        //         });
+        //     }
+        // });
 
         // Fade out the image, bgImage, and text after 3 seconds
-        LeanTween.delayedCall(6f, () => {
+        // LeanTween.delayedCall(6f, () => {
 
-            // LeanTween.alpha(image.rectTransform, 0, 1f);
-            // LeanTween.alpha(bgImage.rectTransform, 0, 1f);
-            // LeanTween.value(1, 0, 1f).setOnUpdate((float alpha) => {
-            //     text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
-            // });
+        //     // LeanTween.alpha(image.rectTransform, 0, 1f);
+        //     // LeanTween.alpha(bgImage.rectTransform, 0, 1f);
+        //     // LeanTween.value(1, 0, 1f).setOnUpdate((float alpha) => {
+        //     //     text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+        //     // });
 
-            if (image != null) {
-                LeanTween.alpha(image.rectTransform, 0, 1f);
-            }
-            if (text != null) {
-                LeanTween.value(1, 0, 1f).setOnUpdate((float alpha) => {
-                    text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
-                });
-            }
-        });
+        //     if (image != null) {
+        //         LeanTween.alpha(image.rectTransform, 0, 1f);
+        //     }
+        //     if (text != null) {
+        //         LeanTween.value(1, 0, 1f).setOnUpdate((float alpha) => {
+        //             text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+        //         });
+        //     }
+        // });
     }
 
     void Update() {

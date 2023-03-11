@@ -12,7 +12,7 @@ public class Doors : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // LeanTween visibility of door to 0
-            LeanTween.alpha(door, 0, 0.3f).setEaseInOutQuint();
+            // LeanTween.alpha(door, 0, 0.3f).setEaseInOutQuint();
         }
     }
 
@@ -22,7 +22,7 @@ public class Doors : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // LeanTween visibility of door to 1
-            LeanTween.alpha(door, 1, 0.3f).setEaseInOutQuint();
+            // LeanTween.alpha(door, 1, 0.3f).setEaseInOutQuint();
         }
     }
 }

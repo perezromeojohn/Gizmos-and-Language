@@ -77,10 +77,10 @@ public class DialogueManager : MonoBehaviour
         float startZoom = composer.m_ZoomScale;
         float endZoom = 0.7f;
         // Start the smooth zoom
-        LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
-            // Set the camera's zoom value to the current animation value
-            composer.m_ZoomScale = val;
-        }).setEaseInOutExpo();
+        // LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
+        //     // Set the camera's zoom value to the current animation value
+        //     composer.m_ZoomScale = val;
+        // }).setEaseInOutExpo();
     }
     // Function to zoom the camera out
     public void ZoomOut() {
@@ -89,10 +89,10 @@ public class DialogueManager : MonoBehaviour
         float startZoom = composer.m_ZoomScale;
         float endZoom = 1;
         // Start the smooth zoom
-        LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
-            // Set the camera's zoom value to the current animation value
-            composer.m_ZoomScale = val;
-        }).setEaseInOutExpo();
+        // LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
+        //     // Set the camera's zoom value to the current animation value
+        //     composer.m_ZoomScale = val;
+        // }).setEaseInOutExpo();
     }
 
     public void EnterDialogueMode(TextAsset inkJSON) {
@@ -100,9 +100,9 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
         // leanTween scale setoncomplete set to false the controls panel
-        LeanTween.scaleY(controlsPanel, 0, 0.3f).setEaseInOutExpo().setOnComplete(() => controlsPanel.SetActive(false));
-        // LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(true));
-        LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo();
+        // LeanTween.scaleY(controlsPanel, 0, 0.3f).setEaseInOutExpo().setOnComplete(() => controlsPanel.SetActive(false));
+        // // LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(true));
+        // LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo();
 
         ZoomIn();
 
@@ -118,8 +118,8 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
         controlsPanel.SetActive(true);
-        LeanTween.scale(controlsPanel, Vector3.one, 0.3f).setEaseInOutExpo();
-        LeanTween.scale(dialoguePanel, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(false));
+        // LeanTween.scale(controlsPanel, Vector3.one, 0.3f).setEaseInOutExpo();
+        // LeanTween.scale(dialoguePanel, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(false));
         dialogueText.text = "";
 
         ZoomOut();

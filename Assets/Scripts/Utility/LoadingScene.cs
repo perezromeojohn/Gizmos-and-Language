@@ -43,14 +43,14 @@ public class LoadingScene : MonoBehaviour
         //     transitionBox.gameObject.SetActive(false);
         // });
 
-        LeanTween.scale(loadingGraphic, new Vector3(0, 0, 0), 0.2f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
-            loadingGraphic.gameObject.SetActive(false);
-        });
+        // LeanTween.scale(loadingGraphic, new Vector3(0, 0, 0), 0.2f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
+        //     loadingGraphic.gameObject.SetActive(false);
+        // });
 
         // LeanTween scale only x axis
-        LeanTween.scaleY(transitionBox, 0, 1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
-            transitionBox.gameObject.SetActive(false);
-        });
+        // LeanTween.scaleY(transitionBox, 0, 1f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => {
+        //     transitionBox.gameObject.SetActive(false);
+        // });
         
         
         Debug.Log("Scene loaded");
