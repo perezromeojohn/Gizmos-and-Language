@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class LevelIndicator : MonoBehaviour
 {
@@ -32,6 +33,19 @@ public class LevelIndicator : MonoBehaviour
         //     }
         // });
 
+        // DOTween the above commented out code
+        // use the above code as a reference
+
+        // fade in the image
+        if (image != null) {
+            image.DOFade(1, 1f).SetEase(Ease.InOutExpo).SetDelay(1f);
+        }
+
+        // fade in the text
+        if (text != null) {
+            text.DOFade(1, 1f).SetEase(Ease.InOutExpo).SetDelay(1f);
+        }
+
         // Fade out the image, bgImage, and text after 3 seconds
         // LeanTween.delayedCall(6f, () => {
 
@@ -50,6 +64,19 @@ public class LevelIndicator : MonoBehaviour
         //         });
         //     }
         // });
+
+        // DOTween the above commented out code
+        // use the above code as a reference
+
+        // fade out the image
+        if (image != null) {
+            image.DOFade(0, 1f).SetEase(Ease.InOutExpo).SetDelay(6f);
+        }
+
+        // fade out the text
+        if (text != null) {
+            text.DOFade(0, 1f).SetEase(Ease.InOutExpo).SetDelay(6f);
+        }
     }
 
     void Update() {
