@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -40,6 +41,11 @@ public class DialogueTrigger : MonoBehaviour
             // // LeanTween scale of visual cue to 1
             // LeanTween.scale(visualCue, Vector3.one, 0.3f).setEaseInOutExpo();         
 
+            // DOTween Equivalent of the above commented out code
+            visualCue.transform.DOLocalMoveY(0.25f, 0.3f).SetEase(Ease.InOutExpo);
+            visualCue.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutExpo);
+
+
         }
     }
 
@@ -53,6 +59,10 @@ public class DialogueTrigger : MonoBehaviour
             // LeanTween.moveLocalY(visualCue, 0.0f, 0.3f).setEaseInOutExpo();
             // // LeanTween scale of visual cue to 1
             // LeanTween.scale(visualCue, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => visualCue.SetActive(false));
+
+            // DOTween Equivalent of the above commented out code
+            visualCue.transform.DOLocalMoveY(0.0f, 0.3f).SetEase(Ease.InOutExpo);
+            visualCue.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InOutExpo).OnComplete(() => visualCue.SetActive(false));
         }
     }
 }

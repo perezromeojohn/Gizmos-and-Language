@@ -18,11 +18,11 @@ public class MainMenu : MonoBehaviour
     {
         // add a dotween delay before the buttons are scaled
 
-        buttons[4].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.3f);
-        buttons[3].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.3f);
-        buttons[2].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.6f);
-        buttons[1].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.9f);
-        buttons[0].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(1.2f);
+        buttons[4].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.6f);
+        buttons[3].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.9f);
+        buttons[2].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(1.2f);
+        buttons[1].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(1.5f);
+        buttons[0].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(1.8f);
         
 
         

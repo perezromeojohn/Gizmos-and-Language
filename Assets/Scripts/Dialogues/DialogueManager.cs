@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Ink.Runtime;
+using DG.Tweening;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -76,11 +77,14 @@ public class DialogueManager : MonoBehaviour
         // Set the starting and ending zoom values
         float startZoom = composer.m_ZoomScale;
         float endZoom = 0.7f;
-        // Start the smooth zoom
+        // Start the smooth zoom by using DOTween
+        // use this leantween as a reference
         // LeanTween.value(startZoom, endZoom, duration).setOnUpdate((float val) => {
         //     // Set the camera's zoom value to the current animation value
         //     composer.m_ZoomScale = val;
         // }).setEaseInOutExpo();
+
+        DOTween.To(() => composer.m_ZoomScale, x => composer.m_ZoomScale = x, endZoom, duration).SetEase(Ease.InOutExpo);
     }
     // Function to zoom the camera out
     public void ZoomOut() {
@@ -93,16 +97,24 @@ public class DialogueManager : MonoBehaviour
         //     // Set the camera's zoom value to the current animation value
         //     composer.m_ZoomScale = val;
         // }).setEaseInOutExpo();
+
+        DOTween.To(() => composer.m_ZoomScale, x => composer.m_ZoomScale = x, endZoom, duration).SetEase(Ease.InOutExpo);
     }
 
     public void EnterDialogueMode(TextAsset inkJSON) {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+        // use Dotween to animate the controls panel
+        controlsPanel.transform.DOScaleY(0, 0.3f).SetEase(Ease.InOutExpo).OnComplete(() => controlsPanel.SetActive(false));
+        dialoguePanel.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutExpo).OnComplete(() => dialoguePanel.SetActive(true));
+        dialoguePanel.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutExpo);
+
         // leanTween scale setoncomplete set to false the controls panel
         // LeanTween.scaleY(controlsPanel, 0, 0.3f).setEaseInOutExpo().setOnComplete(() => controlsPanel.SetActive(false));
-        // // LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(true));
+        // LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(true));
         // LeanTween.scale(dialoguePanel, Vector3.one, 0.3f).setEaseInOutExpo();
+        
 
         ZoomIn();
 
@@ -118,6 +130,9 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
         controlsPanel.SetActive(true);
+        // use dotween to animate the controls panel
+        controlsPanel.transform.DOScaleY(1, 0.3f).SetEase(Ease.InOutExpo).OnComplete(() => controlsPanel.SetActive(true));
+        dialoguePanel.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InOutExpo).OnComplete(() => dialoguePanel.SetActive(false));
         // LeanTween.scale(controlsPanel, Vector3.one, 0.3f).setEaseInOutExpo();
         // LeanTween.scale(dialoguePanel, Vector3.zero, 0.3f).setEaseInOutExpo().setOnComplete(() => dialoguePanel.SetActive(false));
         dialogueText.text = "";
