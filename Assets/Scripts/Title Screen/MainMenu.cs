@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour
     public GameObject gameVersion;
     public GameObject developer;
 
+    public GameObject exitNoticeDim;
+    public GameObject exitNotice;
+
     void Awake() {
         // set alpha of the image gameTitle to 0
 
@@ -20,6 +23,12 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // set the exitNoticeDim image opacity to 0
+        exitNoticeDim.GetComponent<Image>().DOFade(0, 0);
+        exitNoticeDim.SetActive(false);
+        // set the exitNotice scale to 0 and active to false
+        exitNotice.transform.localScale = Vector3.zero;
+        exitNotice.SetActive(false);
         // add a dotween delay before the buttons are scaled
         // above code works fine but it's not very DRY
         // can you use DOTween.Sequence() to avoid repeating the same code?
@@ -54,5 +63,28 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void exitPrompt() {
+        // set the exitNoticeDim to active and the image faed to .7 within .5 seconds
+        exitNoticeDim.SetActive(true);
+        exitNoticeDim.GetComponent<Image>().DOFade(0.7f, 0.5f).SetEase(Ease.InOutExpo);
+
+        // set the exitNotice to active and scale to 1 within .5 seconds
+        exitNotice.SetActive(true);
+        exitNotice.transform.DOScale(1, 0.5f).SetEase(Ease.InOutExpo);
+    }
+
+    public void returnToMenu() {
+        // ser the exitNoticeDim the image fade to 0 and then on complete set the exitNoticeDim to inactive
+        exitNoticeDim.GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.InOutExpo).OnComplete(() => exitNoticeDim.SetActive(false));
+
+        // set the exitNotice to scale to 0 and then on complete set the exitNotice to inactive
+        exitNotice.transform.DOScale(0, 0.5f).SetEase(Ease.InOutExpo).OnComplete(() => exitNotice.SetActive(false));
+    }
+
+    public void exitApplication() {
+        Debug.Log("Application Quit");
+        Application.Quit();
     }
 }

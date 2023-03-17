@@ -9,12 +9,43 @@ public class BE2_Cst_FlipSprite : BE2_InstructionBase, I_BE2_Instruction
     // ### Execution Methods ###
 
     // --- Method used to implement Function Blocks (will only be called by types: simple, condition, loop, trigger)
+
+    // so this script is handling the flip sprite block, which is a function block
+    // it works as if the user picks the contents inside of the dropdown which is X and Y, it will flip the sprite on the X and Y axis
+    // so the user can pick which axis to flip the sprite on
+    
+    // now get the inputs from the first section
+    
+    // code here
+    I_BE2_BlockSectionHeaderInput _input0;
     public new void Function()
     {
         // --- use Section0Inputs[inputIndex] to get the Block inputs from the first section (index 0).
+
         // --- Optionally, use GetSectionInputs(sectionIndex)[inputIndex] to get inputs from a different section
         // --- the input values can be retrieved as .StringValue, .FloatValue or .InputValues 
         // Section0Inputs[inputIndex];
+
+        // get the first input from the first section and store it in the variable _input0
+        _input0 = Section0Inputs[0];
+        
+
+        // now make a switch statement to check which input the user picked
+        // if the user picked X, then flip the sprite on the X axis
+        // if the user picked Y, then flip the sprite on the Y axis
+        // Using TargetObject Transform 
+
+        switch (_input0.StringValue)
+        {
+            case "Y":
+                TargetObject.Transform.Rotate(Vector3.right, 180);
+                break;
+            case "X":
+                TargetObject.Transform.Rotate(Vector3.up, 180);
+                break;
+            default:
+                break;
+        }
 
         // ### Stack Pointer Calls ###
         
@@ -24,70 +55,4 @@ public class BE2_Cst_FlipSprite : BE2_InstructionBase, I_BE2_Instruction
         // --- execute next block after this, used to finish the execution of this function
         ExecuteNextInstruction();
     }
-
-    // --- Method used to implement Operation Blocks (will only be called by type: operation)
-    public new string Operation()
-    {
-        string result = "";
-        
-        // --- use Section0Inputs[inputIndex] to get the Block inputs from the first section (index 0).
-        // --- Optionally, use GetSectionInputs(sectionIndex)[inputIndex] to get inputs from a different section
-        // --- the input values can be retrieved as .StringValue, .FloatValue or .InputValues 
-        // Section0Inputs[inputIndex];
-        
-        // --- opeartion results are always of type string.
-        // --- bool return strings are usually "1", "true", "0", "false".
-        // --- numbers are returned as strings and converted on the input get.
-        return result;
-    }
-
-    // ### Execution Setting ###
-
-    // --- Use ExecuteInUpdate for functions that plays repeatedly in update, holding the blocks stack execution flow until completed (ex.: wait, lerp).
-    // --- Default value is false. Loop Blocks are always executed in update (true).
-    //public new bool ExecuteInUpdate => true; 
-
-    // ### Additional Methods ###
-
-    // --- executed after base Awake
-    //protected override void OnAwake()
-    //{
-    //    
-    //}
-    
-    // --- executed after base Start
-    //protected override void OnStart()
-    //{
-    //    
-    //}
-
-    // --- Update can be overridden
-    //void Update()
-    //{
-    //
-    //}
-
-    // --- executed on button play pressed
-    //protected override void OnButtonPlay()
-    //{
-    //
-    //}
-
-    // --- executed on button stop pressed
-    //protected override void OnButtonStop()
-    //{
-    //
-    //}
-
-    // --- executed after blocks stack is populated
-    //public override void OnPrepareToPlay()
-    //{
-    //
-    //}
-
-    // --- executed on the stack transition from deactive to active
-    //public override void OnStackActive()
-    //{
-    //
-    //}
 }

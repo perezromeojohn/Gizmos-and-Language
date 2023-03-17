@@ -13,12 +13,28 @@ public class ModeSelectionScript : MonoBehaviour
 
     [SerializeField] private GameObject popUpText;
     [SerializeField] private GameObject popUpButton;
+
+    [SerializeField] private GameObject[] modeSelectionButtons;
     void Start()
     {
         blockMode.SetActive(false);
         popUp.SetActive(false);
         popUpText.SetActive(false);
         popUpButton.SetActive(false);
+
+
+        foreach (GameObject button in modeSelectionButtons) {
+            // set scale to 0
+            button.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+
+        // scale them one at a time using sequence append
+        Sequence sequence = DOTween.Sequence();
+
+        // for loop to iterate through the buttons array
+        for (int i = 0; i < modeSelectionButtons.Length; i++) {
+            sequence.Append(modeSelectionButtons[i].transform.DOScale(1, 0.4f).SetEase(Ease.OutBack));
+        }
     }
 
     // Update is called once per frame
@@ -28,13 +44,26 @@ public class ModeSelectionScript : MonoBehaviour
     }
 
     public void HideModeButtons() {
+        // scale down the modeSelectionButtons at the same time to 0 then setoncomplete set the modeButtons to false
+        Sequence sequence = DOTween.Sequence();
+        for (int i = 0; i < modeSelectionButtons.Length; i++) {
+            sequence.Append(modeSelectionButtons[i].transform.DOScale(0, 0.2f).SetEase(Ease.InBack));
+        }
+        sequence.OnComplete(ShowBlockMode);
+    }
+
+    public void ShowBlockMode() {
         modeButtons.SetActive(false);
         blockMode.SetActive(true);
     }
 
     public void ShowModeButtons() {
-        modeButtons.SetActive(true);
         blockMode.SetActive(false);
+        modeButtons.SetActive(true);
+        Sequence sequence = DOTween.Sequence();
+        for (int i = 0; i < modeSelectionButtons.Length; i++) {
+            sequence.Append(modeSelectionButtons[i].transform.DOScale(1, 0.2f).SetEase(Ease.OutBack));
+        }
     }
 
     public void PopUp() {
