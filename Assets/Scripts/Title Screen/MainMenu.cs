@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour
     public GameObject exitNoticeDim;
     public GameObject exitNotice;
 
+    public GameObject mainColumn;
+    public GameObject settingsColumn;
+
     void Awake() {
         // set alpha of the image gameTitle to 0
 
@@ -44,7 +47,6 @@ public class MainMenu : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++) {
             mySequence.Append(buttons[i].transform.DOScale(1, 0.5f).SetEase(Ease.OutBack));
         }
-        
 
         // logo image
         gameTitle.GetComponent<Image>().DOFade(1, 0.5f).SetEase(Ease.InOutExpo).SetDelay(0.5f);
@@ -86,5 +88,22 @@ public class MainMenu : MonoBehaviour
     public void exitApplication() {
         Debug.Log("Application Quit");
         Application.Quit();
+    }
+
+    // make me a link director to this page https://www.freeprivacypolicy.com/live/ac421c71-1c3d-44af-ac64-0fc3cda56b63
+    public void privacyPolicy() {
+        Application.OpenURL("https://www.freeprivacypolicy.com/live/ac421c71-1c3d-44af-ac64-0fc3cda56b63");
+    }
+
+    // hide main column, show settings column
+    public void settings() {
+        mainColumn.SetActive(false);
+        settingsColumn.SetActive(true);
+    }
+
+    // hide settings column, show main column
+    public void menu() {
+        settingsColumn.SetActive(false);
+        mainColumn.SetActive(true);
     }
 }

@@ -6,24 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 7ace3d52164b1184eafd6013918cb6e2
+  - enabled: 0
     path: Assets/BlocksEngine2/Scenes/BE2SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/BlocksEngine2/Scenes/BE2MultipleTargetObjects.unity
     guid: 0333588ed2034d28cbcc190ca5aeeb80
-  - enabled: 1
-    path: Assets/Scenes/Main Menu/Main Menu.unity
-    guid: 8a2258e28fe759a44957a0319690af0f
   - enabled: 1
     path: Assets/Scenes/Main Menu/Settings.unity
     guid: b7af6e42b2eb35d41a9d4ead38ea392c
   - enabled: 1
-    path: Assets/Scenes/StartScene.unity
-    guid: 7ace3d52164b1184eafd6013918cb6e2
+    path: Assets/Scenes/Main Menu/Main Menu.unity
+    guid: 8a2258e28fe759a44957a0319690af0f
   - enabled: 1
     path: Assets/Scenes/Module 1/Level 1.unity
     guid: 1fe0112bd1128c8469c940a91fb69945
   - enabled: 1
     path: Assets/Scenes/Main Menu/ModeSelection.unity
     guid: 3ba033c8a68ced94abad14a775589521
+  - enabled: 0
+    path: Assets/Scenes/BlockLevelTemp.unity
+    guid: e6b0353285cb09647bce3fbbd0f8635a
+  - enabled: 1
+    path: Assets/Scenes/BlockLevelTemp-REQUIRED.unity
+    guid: c8e9e8f5b72545a4f86b56abcda8b874
+  - enabled: 1
+    path: Assets/Scenes/Block Levels/Block Level 1.unity
+    guid: 69c99a3f2c90dad4c80eb11046f6b3ed
+  - enabled: 1
+    path: Assets/Scenes/Main Menu/Store.unity
+    guid: 24948f5e077235b459e682896c2a740d
   m_configObjects: {}
