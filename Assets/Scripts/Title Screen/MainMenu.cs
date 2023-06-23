@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject[] buttons;
     public GameObject itchButton;
+    public GameObject emailButton;
+
     public GameObject gameTitle;
     public GameObject imageHolder;
     public GameObject gameVersion;
@@ -15,6 +17,9 @@ public class MainMenu : MonoBehaviour
 
     public GameObject exitNoticeDim;
     public GameObject exitNotice;
+
+    public GameObject dataPrivacyDim;
+    public GameObject dataPrivacy;
 
     public GameObject mainColumn;
     public GameObject settingsColumn;
@@ -32,6 +37,13 @@ public class MainMenu : MonoBehaviour
         // set the exitNotice scale to 0 and active to false
         exitNotice.transform.localScale = Vector3.zero;
         exitNotice.SetActive(false);
+
+        // set the dataPrivacyDim image opacity to 0
+        dataPrivacyDim.GetComponent<Image>().DOFade(0, 0);
+        dataPrivacyDim.SetActive(false);
+
+        dataPrivacy.transform.localScale = Vector3.zero;
+        dataPrivacy.SetActive(false);
         // add a dotween delay before the buttons are scaled
         // above code works fine but it's not very DRY
         // can you use DOTween.Sequence() to avoid repeating the same code?
@@ -52,19 +64,25 @@ public class MainMenu : MonoBehaviour
         gameTitle.GetComponent<Image>().DOFade(1, 0.5f).SetEase(Ease.InOutExpo).SetDelay(0.5f);
         // scale itch button
         itchButton.transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.7f);
+        emailButton.transform.DOScale(1, 0.5f).SetEase(Ease.OutBack).SetDelay(0.7f);
         // fade in game version (it's a text mesh pro object)
         gameVersion.GetComponent<TMPro.TextMeshProUGUI>().DOFade(1, 0.5f).SetEase(Ease.InOutExpo).SetDelay(0.5f);
         // fade in developer
         developer.GetComponent<Image>().DOFade(1, 0.5f).SetEase(Ease.InOutExpo).SetDelay(0.5f);
-        
-
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void showDataPrivacy() {
+        dataPrivacyDim.SetActive(true);
+        dataPrivacyDim.GetComponent<Image>().DOFade(0.7f, 0.5f).SetEase(Ease.InOutExpo);
+
+        dataPrivacy.SetActive(true);
+        dataPrivacy.transform.DOScale(1, 0.5f).SetEase(Ease.InOutExpo);
+    }
+
+    public void hideDataPrivacy() {
+        dataPrivacyDim.GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.InOutExpo).OnComplete(() => dataPrivacyDim.SetActive(false));
+
+        dataPrivacy.transform.DOScale(0, 0.5f).SetEase(Ease.InOutExpo).OnComplete(() => dataPrivacy.SetActive(false));
     }
 
     public void exitPrompt() {
