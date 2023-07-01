@@ -107,10 +107,8 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Application Quit");
         Application.Quit();
     }
-
-    // make me a link director to this page https://www.freeprivacypolicy.com/live/ac421c71-1c3d-44af-ac64-0fc3cda56b63
     public void privacyPolicy() {
-        Application.OpenURL("https://www.freeprivacypolicy.com/live/ac421c71-1c3d-44af-ac64-0fc3cda56b63");
+        Application.OpenURL("https://forms.gle/GCc8nXECeKJasJoe7");
     }
 
     // hide main column, show settings column

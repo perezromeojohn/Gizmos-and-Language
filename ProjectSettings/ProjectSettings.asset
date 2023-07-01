@@ -160,6 +160,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.rumyooo.GizmosandLanguage
     Standalone: com.rumyooo.Gizmos-and-Language
   buildNumber:
     Standalone: 0
@@ -319,7 +320,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 624cabb9464969a4fb725e26a3e6a5e7, type: 3}
+      m_Icon: {fileID: 2800000, guid: 83954ba9e82ea6f478627b7cb9af7663, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

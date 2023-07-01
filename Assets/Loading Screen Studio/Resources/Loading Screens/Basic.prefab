@@ -3732,7 +3732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 1.6
+  m_AspectRatio: 1.7777778
 --- !u!1 &7329535502352419566
 GameObject:
   m_ObjectHideFlags: 0
@@ -4746,8 +4746,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hint text here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3015d2c5ebbad4fbc944c8238764609f, type: 2}
-  m_sharedMaterial: {fileID: -5208123747987676297, guid: 3015d2c5ebbad4fbc944c8238764609f,
+  m_fontAsset: {fileID: 11400000, guid: 50c12c23294124aa48490c44ac65a9e4, type: 2}
+  m_sharedMaterial: {fileID: 7746803525459343344, guid: 50c12c23294124aa48490c44ac65a9e4,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
